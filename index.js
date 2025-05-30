@@ -21,7 +21,7 @@ const pusher = new Pusher({
   appId: app_id,
   secret,
   cluster,
-  useTLS: true, // disable TLS for localhost
+  useTLS: false, // disable TLS for localhost
 });
 
 app.post('/pusher/auth', (req, res) => {
@@ -39,7 +39,8 @@ app.post('/pusher/auth', (req, res) => {
 
   const auth = pusher.authorizeChannel(socketId, channel);
 
-  console.log('Auth  : ', auth);
+  console.log('Auth  : ');
+  console.log(auth);
 
   res.send(auth);
 });
